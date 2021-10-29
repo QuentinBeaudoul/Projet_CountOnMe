@@ -108,6 +108,15 @@ class ViewController: UIViewController {
         
         textView.text.append(" = \(operationsToReduce.first!)")
     }
+    
+    @IBAction func tappedMultiplicationButton(_ sender: UIButton) {
+        print("multiple")
+    }
+    
+    @IBAction func tappedDivideButton(_ sender: UIButton) {
+        print("devide")
+    }
+    
 
 }
 
