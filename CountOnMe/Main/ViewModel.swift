@@ -37,7 +37,7 @@ class ViewModel {
     }
 
     func calculating() -> String? {
-        var result = 0
+        var result = 0.0
         var operationToReduce = elements
 
         // If operationToReduce not contain "Invalid operation" elements
@@ -46,11 +46,16 @@ class ViewModel {
         }
 
         while operationToReduce.count > 1 {
-            if let opeL = Int(operationToReduce[0]),
+            if let opeL = Double(operationToReduce[0]),
                let operande = CalculType(rawValue: operationToReduce[1]),
-               let opeR = Int(operationToReduce[2]) {
+               let opeR = Double(operationToReduce[2]) {
 
                 result = calcul.executeOperation(firstOperande: opeL, operator: operande, secondeOperande: opeR)
+
+                if result == Double.greatestFiniteMagnitude {
+                    return " = Invalid"
+                }
+
                 operationToReduce = Array(operationToReduce.dropFirst(3))
                 operationToReduce.insert("\(result)", at: 0)
             } else {

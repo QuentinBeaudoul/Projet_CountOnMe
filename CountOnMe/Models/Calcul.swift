@@ -9,7 +9,7 @@
 import Foundation
 class Calcul {
 
-    func executeOperation(firstOperande op1: Int, operator ope: CalculType, secondeOperande op2: Int) -> Int {
+    func executeOperation(firstOperande op1: Double, operator ope: CalculType, secondeOperande op2: Double) -> Double {
         switch ope {
         case .add:
             return addition(firstOperande: op1, secondeOperande: op2)
@@ -22,18 +22,21 @@ class Calcul {
         }
     }
 
-    private func addition(firstOperande: Int, secondeOperande: Int) -> Int {
+    private func addition(firstOperande: Double, secondeOperande: Double) -> Double {
         return firstOperande + secondeOperande
     }
 
-    private func substraction(firstOperande: Int, secondeOperande: Int) -> Int {
+    private func substraction(firstOperande: Double, secondeOperande: Double) -> Double {
         return firstOperande - secondeOperande
     }
 
-    private func multiplication(firstOperande: Int, secondeOperande: Int) -> Int {
+    private func multiplication(firstOperande: Double, secondeOperande: Double) -> Double {
         return firstOperande * secondeOperande
     }
-    private func divide(firstOperande: Int, secondeOperande: Int) -> Int {
+    private func divide(firstOperande: Double, secondeOperande: Double) -> Double {
+        if secondeOperande == 0 {
+            return Double.greatestFiniteMagnitude
+        }
         return firstOperande / secondeOperande
     }
 }
