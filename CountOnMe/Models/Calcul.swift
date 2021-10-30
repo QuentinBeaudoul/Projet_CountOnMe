@@ -34,9 +34,9 @@ class Calcul {
 }
 
 // Operande type
-enum CalculType {
-    case add
-    case substract
-    case divide
-    case multiplies
+enum CalculType: String {
+    case add = "+"
+    case substract = "-"
+    case divide = "/"
+    case multiplies = "*"
 }
