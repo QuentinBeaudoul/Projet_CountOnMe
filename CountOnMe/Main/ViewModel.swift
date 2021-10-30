@@ -20,7 +20,8 @@ class ViewModel {
 
     // Error check computed variables
     var expressionIsCorrect: Bool {
-        return elements.last != "+" && elements.last != "-"
+        return elements.last != CalculType.add.rawValue && elements.last != CalculType.substract.rawValue
+        && elements.last != CalculType.divide.rawValue && elements.last != CalculType.multiplies.rawValue
     }
 
     var expressionHaveEnoughElement: Bool {
@@ -28,12 +29,11 @@ class ViewModel {
     }
 
     var canAddOperator: Bool {
-        return elements.last != "+" && elements.last != "-"
+        return elements.last != CalculType.add.rawValue && elements.last != CalculType.substract.rawValue
+        && elements.last != CalculType.multiplies.rawValue && elements.last != CalculType.divide.rawValue
     }
     var expressionHaveResult: Bool {
-        return !elements.filter { field in
-            field.contains("=")
-        }.isEmpty
+        return !elements.filter { $0.contains("=") }.isEmpty
     }
 
     func calculating() -> String? {

@@ -24,6 +24,18 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.// Error check computed variables
     }
 
+    private func textViewDidChange() {
+        viewModel.elements = textView.text.split(separator: " ").map { "\($0)" }
+    }
+
+    private func showAlert(title: String, message: String) {
+        let alertVC = UIAlertController(title: title,
+                                        message: message,
+                                        preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
+    }
+
     // View actions
     @IBAction func tappedNumberButton(_ sender: UIButton) {
         guard let numberText = sender.title(for: .normal) else {
@@ -74,24 +86,23 @@ class ViewController: UIViewController {
         }
     }
 
-    private func textViewDidChange() {
-        viewModel.elements = textView.text.split(separator: " ").map { "\($0)" }
-    }
-    
-    private func showAlert(title: String, message: String) {
-        let alertVC = UIAlertController(title: title,
-                                        message: message,
-                                        preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        self.present(alertVC, animated: true, completion: nil)
-    }
-
     @IBAction func tappedMultiplicationButton(_ sender: UIButton) {
-        print("multiple")
+        if viewModel.canAddOperator {
+            textView.text.append(" * ")
+            textViewDidChange()
+        } else {
+            showAlert(title: "Zéro!", message: "Un operateur est déja mis !")
+        }
     }
 
     @IBAction func tappedDivideButton(_ sender: UIButton) {
         print("devide")
+        if viewModel.canAddOperator {
+            textView.text.append(" / ")
+            textViewDidChange()
+        } else {
+            showAlert(title: "Zéro!", message: "Un operateur est déja mis !")
+        }
     }
 
 }

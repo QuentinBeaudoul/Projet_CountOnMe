@@ -16,21 +16,26 @@ class Calcul {
         case .substract:
             return substraction(firstOperande: op1, secondeOperande: op2)
         case .divide:
-            print("TODO")
-            return 0
+            return divide(firstOperande: op1, secondeOperande: op2)
         case .multiplies:
-            print("TODO")
-            return 0
+            return multiplication(firstOperande: op1, secondeOperande: op2)
         }
     }
 
     private func addition(firstOperande: Int, secondeOperande: Int) -> Int {
         return firstOperande + secondeOperande
     }
+
     private func substraction(firstOperande: Int, secondeOperande: Int) -> Int {
         return firstOperande - secondeOperande
     }
 
+    private func multiplication(firstOperande: Int, secondeOperande: Int) -> Int {
+        return firstOperande * secondeOperande
+    }
+    private func divide(firstOperande: Int, secondeOperande: Int) -> Int {
+        return firstOperande / secondeOperande
+    }
 }
 
 // Operande type
