@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     }
     @IBOutlet var numberButtons: [UIButton]!
 
+    @IBOutlet var operatorButtons: [UIButton]!
     let viewModel = ViewModel()
 
     // View Life cycles
@@ -36,6 +37,18 @@ class ViewController: UIViewController {
         self.present(alertVC, animated: true, completion: nil)
     }
 
+    private func enableAllOperatorButtons() {
+        for operatorButton in operatorButtons {
+            operatorButton.isEnabled = true
+        }
+    }
+
+    private func disableAllOperatorButtons() {
+        for operatorButton in operatorButtons {
+            operatorButton.isEnabled = false
+        }
+    }
+
     // View actions
     @IBAction func tappedNumberButton(_ sender: UIButton) {
         guard let numberText = sender.title(for: .normal) else {
@@ -49,6 +62,7 @@ class ViewController: UIViewController {
 
         textView.text.append(numberText)
         textViewDidChange()
+        enableAllOperatorButtons()
     }
 
     @IBAction func tappedAdditionButton(_ sender: UIButton) {
@@ -66,23 +80,6 @@ class ViewController: UIViewController {
             textViewDidChange()
         } else {
             showAlert(title: "Zéro!", message: "Un operateur est déja mis !")
-        }
-    }
-
-    @IBAction func tappedEqualButton(_ sender: UIButton) {
-        guard viewModel.expressionIsCorrect else {
-            showAlert(title: "Zéro!", message: "Entrez une expression correcte !")
-            return
-        }
-
-        guard viewModel.expressionHaveEnoughElement else {
-            showAlert(title: "Zéro!", message: "Démarrez un nouveau calcul !")
-            return
-        }
-
-        if let result = viewModel.calculating() {
-            textView.text.append(result)
-            textViewDidChange()
         }
     }
 
@@ -105,4 +102,21 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBAction func tappedEqualButton(_ sender: UIButton) {
+        guard viewModel.expressionIsCorrect else {
+            showAlert(title: "Zéro!", message: "Entrez une expression correcte !")
+            return
+        }
+
+        guard viewModel.expressionHaveEnoughElement else {
+            showAlert(title: "Zéro!", message: "Démarrez un nouveau calcul !")
+            return
+        }
+
+        if let result = viewModel.calculating() {
+            textView.text.append(result)
+            textViewDidChange()
+            disableAllOperatorButtons()
+        }
+    }
 }
