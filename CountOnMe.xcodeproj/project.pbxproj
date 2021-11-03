@@ -12,8 +12,9 @@
 		1FA43BD8224E569900F565CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA43BD6224E569900F565CB /* Main.storyboard */; };
 		1FA43BDA224E569A00F565CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FA43BD9224E569A00F565CB /* Assets.xcassets */; };
 		1FA43BDD224E569A00F565CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA43BDB224E569A00F565CB /* LaunchScreen.storyboard */; };
-		1FA43BE8224E569A00F565CB /* SimpleCalcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA43BE7224E569A00F565CB /* SimpleCalcTests.swift */; };
+		1FA43BE8224E569A00F565CB /* CalculTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA43BE7224E569A00F565CB /* CalculTests.swift */; };
 		1FA43BF3224E569A00F565CB /* SimpleCalcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA43BF2224E569A00F565CB /* SimpleCalcUITests.swift */; };
+		4FBFFB9C2732A43700ADDA06 /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBFFB9B2732A43700ADDA06 /* ViewModelTests.swift */; };
 		6618439D272C31F9009B586B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6618439C272C31F9009B586B /* ViewModel.swift */; };
 		661843A0272C360E009B586B /* Calcul.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6618439F272C360E009B586B /* Calcul.swift */; };
 /* End PBXBuildFile section */
@@ -44,9 +45,10 @@
 		1FA43BDC224E569A00F565CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FA43BDE224E569A00F565CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FA43BE3224E569A00F565CB /* CountOnMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountOnMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1FA43BE7224E569A00F565CB /* SimpleCalcTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCalcTests.swift; sourceTree = "<group>"; };
+		1FA43BE7224E569A00F565CB /* CalculTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculTests.swift; sourceTree = "<group>"; };
 		1FA43BEE224E569A00F565CB /* CountOnMeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountOnMeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA43BF2224E569A00F565CB /* SimpleCalcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCalcUITests.swift; sourceTree = "<group>"; };
+		4FBFFB9B2732A43700ADDA06 /* ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTests.swift; sourceTree = "<group>"; };
 		6618439C272C31F9009B586B /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		6618439F272C360E009B586B /* Calcul.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calcul.swift; sourceTree = "<group>"; };
 		661843A6272C4675009B586B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,7 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				661843A6272C4675009B586B /* Info.plist */,
-				1FA43BE7224E569A00F565CB /* SimpleCalcTests.swift */,
+				1FA43BE7224E569A00F565CB /* CalculTests.swift */,
+				4FBFFB9B2732A43700ADDA06 /* ViewModelTests.swift */,
 			);
 			path = CountOnMeTests;
 			sourceTree = "<group>";
@@ -318,7 +321,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FA43BE8224E569A00F565CB /* SimpleCalcTests.swift in Sources */,
+				4FBFFB9C2732A43700ADDA06 /* ViewModelTests.swift in Sources */,
+				1FA43BE8224E569A00F565CB /* CalculTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
