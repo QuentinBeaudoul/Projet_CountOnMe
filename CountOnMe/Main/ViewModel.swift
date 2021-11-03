@@ -36,6 +36,9 @@ class ViewModel {
         return !elements.filter { $0.contains("=") }.isEmpty
     }
 
+    
+    
+    // Perform calcul process and return a displayable result
     func calculating() -> String? {
         var result = 0.0
         var operationToReduce = elements
@@ -67,6 +70,8 @@ class ViewModel {
         return " = \(operationToReduce.first!)"
     }
 
+    
+    // Find the next prior operator and return -1, index and + 1 index
     private func findNextOperation(inTab tab: [String]) -> [Int]? {
         for (index, str) in tab.enumerated() {
             if str == CalculType.multiplies.rawValue || str == CalculType.divide.rawValue {
