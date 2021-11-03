@@ -93,7 +93,6 @@ class ViewController: UIViewController {
     }
 
     @IBAction func tappedDivideButton(_ sender: UIButton) {
-        print("devide")
         if viewModel.canAddOperator {
             textView.text.append(" / ")
             textViewDidChange()
