@@ -62,8 +62,6 @@ class ViewModel {
                 // move the result at the good place
                 operationToReduce.insert("\(result)", at: (nextOp?[0] ?? 0))
 
-            } else {
-                return " = Invalid"
             }
         }
         return " = \(operationToReduce.first!)"

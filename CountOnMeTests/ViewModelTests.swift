@@ -57,4 +57,92 @@ class ViewModelTests: XCTestCase {
         // Then
         XCTAssert(result == true)
     }
+
+    func testGivenExpressionWithOperatorInLast_WhenTryToAddOperator_ThenExpressionShouldBeInvalidate() {
+        // Given
+        viewModel.elements = ["4", "-", "2", "+"]
+
+        // When
+        let result = viewModel.canAddOperator
+
+        // Then
+        XCTAssert(result == false)
+    }
+
+    func testGivenExpressionWithOperandeInLast_WhenTryToAddOperator_ThenExpressionShouldBeValidate() {
+        // Given
+        viewModel.elements = ["4", "-", "2", "+", "9"]
+
+        // When
+        let result = viewModel.canAddOperator
+
+        // Then
+        XCTAssert(result == true)
+    }
+
+    func testGivenWellFormedExpression_WhenCheckIfResult_ThenExpressionShouldBeValidate() {
+        // Given
+        viewModel.elements = ["4", "-", "2", "+", "9", "=", "11"]
+
+        // When
+        let result = viewModel.expressionHaveResult
+
+        // Then
+        XCTAssert(result == true)
+    }
+
+    func testGivenWellMalFormedExpression_WhenCheckIfResult_ThenExpressionShouldBeInvalidate() {
+        // Given
+        viewModel.elements = ["4", "-", "2", "+", "9"]
+
+        // When
+        let result = viewModel.expressionHaveResult
+
+        // Then
+        XCTAssert(result == false)
+    }
+
+    func testGivenExpression_WhenPerformCalcul_ThenResultShouldBeReturnAsString() {
+        // Given
+        viewModel.elements = ["4", "-", "2", "+", "9"]
+
+        // When
+        let result = viewModel.calculating()!
+
+        // Then
+        XCTAssertEqual(result, " = 11.0")
+    }
+
+    func testGivenComplexeExpression_WhenPerformCalcul_ThenResultShouldBeReturnAsString() {
+        // Given
+        viewModel.elements = ["4", "-", "2", "/", "5", "+", "9", "*", "4"]
+
+        // When
+        let result = viewModel.calculating()!
+
+        // Then
+        XCTAssertEqual(result, " = 39.6")
+    }
+
+    func testGivenExpressionContainInvalid_WhenPerformCalcul_ThenResultShouldReturnNil() {
+        // Given
+        viewModel.elements = ["4", "-", "2", "/", "5", "+", "9", "*", "4", "Invalid"]
+
+        // When
+        let result = viewModel.calculating()
+
+        // Then
+        XCTAssertNil(result)
+    }
+
+    func testGivenExpressionContainZeroAsDiviser_WhenPerformCalcul_ThenResultShouldReturnInvalid() {
+        // Given
+        viewModel.elements = ["4", "/", "0"]
+
+        // When
+        let result = viewModel.calculating()!
+
+        // Then
+        XCTAssertEqual(result, " = Invalid")
+    }
 }
