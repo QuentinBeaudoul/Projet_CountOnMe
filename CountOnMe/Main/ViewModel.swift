@@ -46,22 +46,35 @@ class ViewModel {
         }
 
         while operationToReduce.count > 1 {
-            if let opeL = Double(operationToReduce[0]),
-               let operande = CalculType(rawValue: operationToReduce[1]),
-               let opeR = Double(operationToReduce[2]) {
+            let nextOp = findNextOperation(inTab: operationToReduce)
+
+            if let opeL = Double(operationToReduce[nextOp?[0] ?? 0]),
+               let operande = CalculType(rawValue: operationToReduce[nextOp?[1] ?? 1]),
+               let opeR = Double(operationToReduce[nextOp?[2] ?? 2]) {
 
                 result = calcul.executeOperation(firstOperande: opeL, operator: operande, secondeOperande: opeR)
-
                 if result == Double.greatestFiniteMagnitude {
                     return " = Invalid"
                 }
 
-                operationToReduce = Array(operationToReduce.dropFirst(3))
-                operationToReduce.insert("\(result)", at: 0)
+                operationToReduce.removeSubrange((nextOp?[0] ?? 0)...(nextOp?[2] ?? 2))
+                operationToReduce = Array(operationToReduce)
+                // move the result at the good place
+                operationToReduce.insert("\(result)", at: (nextOp?[0] ?? 0))
+
             } else {
                 return " = Invalid"
             }
         }
         return " = \(operationToReduce.first!)"
+    }
+
+    private func findNextOperation(inTab tab: [String]) -> [Int]? {
+        for (index, str) in tab.enumerated() {
+            if str == CalculType.multiplies.rawValue || str == CalculType.divide.rawValue {
+                return [index - 1, index, index + 1]
+            }
+        }
+        return nil
     }
 }
