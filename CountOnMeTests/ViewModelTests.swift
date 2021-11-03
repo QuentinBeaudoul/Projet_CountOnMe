@@ -22,7 +22,7 @@ class ViewModelTests: XCTestCase {
         let result = viewModel.expressionIsCorrect
 
         // Then
-        XCTAssert(result == false)
+        XCTAssertFalse(result)
     }
 
     func testGivenGoodExpression_WhenChecking_ThenExpressionShouldBeValidated() {
@@ -33,7 +33,7 @@ class ViewModelTests: XCTestCase {
         let result = viewModel.expressionIsCorrect
 
         // Then
-        XCTAssert(result == true)
+        XCTAssertTrue(result)
     }
 
     func testGivenTooShortExpression_WhenCheckingIfHaveEnoughElements_ThenExpressionShouldBeInvalidate() {
@@ -44,7 +44,7 @@ class ViewModelTests: XCTestCase {
         let result = viewModel.expressionHaveEnoughElement
 
         // Then
-        XCTAssert(result == false)
+        XCTAssertFalse(result)
     }
 
     func testGivenEnoughLongExpression_WhenCheckingIfHaveEnoughElements_ThenExpressionShouldBeValidate() {
@@ -55,7 +55,7 @@ class ViewModelTests: XCTestCase {
         let result = viewModel.expressionHaveEnoughElement
 
         // Then
-        XCTAssert(result == true)
+        XCTAssertTrue(result)
     }
 
     func testGivenExpressionWithOperatorInLast_WhenTryToAddOperator_ThenExpressionShouldBeInvalidate() {
@@ -66,7 +66,7 @@ class ViewModelTests: XCTestCase {
         let result = viewModel.canAddOperator
 
         // Then
-        XCTAssert(result == false)
+        XCTAssertFalse(result)
     }
 
     func testGivenExpressionWithOperandeInLast_WhenTryToAddOperator_ThenExpressionShouldBeValidate() {
@@ -77,7 +77,7 @@ class ViewModelTests: XCTestCase {
         let result = viewModel.canAddOperator
 
         // Then
-        XCTAssert(result == true)
+        XCTAssertTrue(result)
     }
 
     func testGivenWellFormedExpression_WhenCheckIfResult_ThenExpressionShouldBeValidate() {
@@ -88,7 +88,7 @@ class ViewModelTests: XCTestCase {
         let result = viewModel.expressionHaveResult
 
         // Then
-        XCTAssert(result == true)
+        XCTAssertTrue(result)
     }
 
     func testGivenWellMalFormedExpression_WhenCheckIfResult_ThenExpressionShouldBeInvalidate() {
@@ -99,7 +99,7 @@ class ViewModelTests: XCTestCase {
         let result = viewModel.expressionHaveResult
 
         // Then
-        XCTAssert(result == false)
+        XCTAssertFalse(result)
     }
 
     func testGivenExpression_WhenPerformCalcul_ThenResultShouldBeReturnAsString() {

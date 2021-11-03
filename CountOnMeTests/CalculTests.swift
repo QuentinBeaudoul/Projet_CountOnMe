@@ -23,7 +23,7 @@ class CalculTests: XCTestCase {
                                                        operator: CalculType.add,
                                                        secondeOperande: secondeOperande)
         // Then
-        XCTAssert(result == 15)
+        XCTAssertEqual(result, 15)
     }
 
     func testGivenTwoNumbers_WhenSubstractioning_ThenFirstOperandShouldBeSubstractBySecondeOperande() {
@@ -36,7 +36,7 @@ class CalculTests: XCTestCase {
                                                        operator: CalculType.substract,
                                                        secondeOperande: secondeOperande)
         // Then
-        XCTAssert(result == 3)
+        XCTAssertEqual(result, 3)
     }
 
     func testGivenTwoNumbers_WhenMultiplicationing_ThenFirstOperandShouldMultiplieSecondeOperande() {
@@ -49,7 +49,7 @@ class CalculTests: XCTestCase {
                                                        operator: CalculType.multiplies,
                                                        secondeOperande: secondeOperande)
         // Then
-        XCTAssert(result == 10)
+        XCTAssertEqual(result, 10)
     }
 
     func testGivenTwoNumbers_WhenDividing_ThenFirstOperandShouldBeDividedBySecondeOperande() {
@@ -62,7 +62,7 @@ class CalculTests: XCTestCase {
                                                        operator: CalculType.divide,
                                                        secondeOperande: secondeOperande)
         // Then
-        XCTAssert(result == 5)
+        XCTAssertEqual(result, 5)
     }
 
     func testGivenTwoNumbersDiviserIsZero_WhenDividing_ThenFirstOperandShouldBeDividedBySecondeOperande() {
@@ -76,7 +76,7 @@ class CalculTests: XCTestCase {
                                                        secondeOperande: secondeOperande)
         // Then
         // Double.greatestFiniteMagnitude mean the result is impossible
-        XCTAssert(result == Double.greatestFiniteMagnitude)
+        XCTAssertEqual(result, Double.greatestFiniteMagnitude)
     }
 
 }
