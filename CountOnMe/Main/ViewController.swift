@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet var numberButtons: [UIButton]!
 
     @IBOutlet var operatorButtons: [UIButton]!
-    let viewModel = ViewModel()
+    let viewModel = Model()
 
     // View Life cycles
     override func viewDidLoad() {

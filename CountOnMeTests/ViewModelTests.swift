@@ -12,7 +12,7 @@ import XCTest
 
 class ViewModelTests: XCTestCase {
 
-    let viewModel = ViewModel()
+    let viewModel = Model()
 
     func testGivenWrongExpression_WhenChecking_ThenExpressionShouldBeInvalidated() {
         // Given

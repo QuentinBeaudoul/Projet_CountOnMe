@@ -11,7 +11,7 @@ import XCTest
 
 class CalculTests: XCTestCase {
 
-    let calcul = ViewModel().calcul
+    let calcul = Model().calcul
 
     func testGivenTwoNumbers_WhenAdditioning_ThenFirstOperandShouldAddSecondeOperande() {
         // Given
