@@ -70,7 +70,7 @@ class ViewController: UIViewController {
             textView.text.append(" + ")
             textViewDidChange()
         } else {
-            showAlert(title: "Zéro!", message: "Un operateur est déja mis !")
+            showAlert(title: "Un opérateur attend déjà son opérande !", message: "Un operateur est déja mis !")
         }
     }
 
@@ -79,7 +79,7 @@ class ViewController: UIViewController {
             textView.text.append(" - ")
             textViewDidChange()
         } else {
-            showAlert(title: "Zéro!", message: "Un operateur est déja mis !")
+            showAlert(title: "Un opérateur attend déjà son opérande !", message: "Un operateur est déja mis !")
         }
     }
 
@@ -88,7 +88,7 @@ class ViewController: UIViewController {
             textView.text.append(" * ")
             textViewDidChange()
         } else {
-            showAlert(title: "Zéro!", message: "Un operateur est déja mis !")
+            showAlert(title: "Un opérateur attend déjà son opérande !", message: "Un operateur est déja mis !")
         }
     }
 
@@ -97,22 +97,25 @@ class ViewController: UIViewController {
             textView.text.append(" / ")
             textViewDidChange()
         } else {
-            showAlert(title: "Zéro!", message: "Un operateur est déja mis !")
+            showAlert(title: "Un opérateur attend déjà son opérande !", message: "Un operateur est déja mis !")
         }
     }
 
     @IBAction func tappedEqualButton(_ sender: UIButton) {
         guard viewModel.expressionIsCorrect else {
-            showAlert(title: "Zéro!", message: "Entrez une expression correcte !")
+            showAlert(title: "Entrez une expression correcte !", message: "")
             return
         }
 
         guard viewModel.expressionHaveEnoughElement else {
-            showAlert(title: "Zéro!", message: "Démarrez un nouveau calcul !")
+            showAlert(title: "L'expression n'est pas correcte !", message: "")
             return
         }
 
         if let result = viewModel.calculating() {
+            if result == " = Invalid" {
+                showAlert(title: "Division par zéro impossible", message: "")
+            }
             textView.text.append(result)
             textViewDidChange()
             disableAllOperatorButtons()
