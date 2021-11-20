@@ -65,36 +65,22 @@ class ViewController: UIViewController {
         enableAllOperatorButtons()
     }
 
-    @IBAction func tappedAdditionButton(_ sender: UIButton) {
-        if viewModel.canAddOperator {
-            textView.text.append(" + ")
-            textViewDidChange()
-        } else {
-            showAlert(title: "Un opérateur attend déjà son opérande !", message: "Un operateur est déja mis !")
-        }
-    }
+    @IBAction func tappedOperatorButton(_ sender: UIButton) {
+        let tag = sender.tag
 
-    @IBAction func tappedSubstractionButton(_ sender: UIButton) {
         if viewModel.canAddOperator {
-            textView.text.append(" - ")
-            textViewDidChange()
-        } else {
-            showAlert(title: "Un opérateur attend déjà son opérande !", message: "Un operateur est déja mis !")
-        }
-    }
-
-    @IBAction func tappedMultiplicationButton(_ sender: UIButton) {
-        if viewModel.canAddOperator {
-            textView.text.append(" * ")
-            textViewDidChange()
-        } else {
-            showAlert(title: "Un opérateur attend déjà son opérande !", message: "Un operateur est déja mis !")
-        }
-    }
-
-    @IBAction func tappedDivideButton(_ sender: UIButton) {
-        if viewModel.canAddOperator {
-            textView.text.append(" / ")
+            switch tag {
+            case 0:
+                textView.text.append(" + ")
+            case 1:
+                textView.text.append(" - ")
+            case 2:
+                textView.text.append(" * ")
+            case 3:
+                textView.text.append(" / ")
+            default:
+                return
+            }
             textViewDidChange()
         } else {
             showAlert(title: "Un opérateur attend déjà son opérande !", message: "Un operateur est déja mis !")
